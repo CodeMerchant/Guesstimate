@@ -1,4 +1,4 @@
-package com.codemerchant.multiplication.challenge.tests;
+package com.codemerchant.multiplication.challenge;
 
 import com.codemerchant.multiplication.attempt.ChallengeAttempt;
 import com.codemerchant.multiplication.challenge.dto.ChallengeAttemptDTO;
@@ -13,6 +13,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.BDDAssertions.then;
@@ -92,6 +94,30 @@ public class ChallengeServiceTest {
         then(resultAttempt.getUser()).isEqualTo(existingUser);
         verify(userRepository, never()).save(any());
         verify(challengeAttemptRepository).save(resultAttempt);
+    }
+
+    @Test
+    public void getUserAttemptsTest() {
+        // given
+        User user = new User("bruno");
+        ChallengeAttempt challengeAttempt = new ChallengeAttempt(1L, user, 20, 20, 800, false);
+        ChallengeAttempt challengeAttempt1 = new ChallengeAttempt(2L, user, 20, 20, 500, false);
+
+        List<ChallengeAttempt> brunoAttempts = new ArrayList<>();
+        brunoAttempts.add(challengeAttempt);
+        brunoAttempts.add(challengeAttempt1);
+
+        given(challengeAttemptRepository.findTop10ByUserAliasOrderByIdDesc("bruno"))
+                .willReturn(brunoAttempts);
+
+        // when
+
+        List<ChallengeAttempt> latestAttemptsResult = challengeService.getStatsForUser("bruno");
+
+        // then
+        then(latestAttemptsResult).isEqualTo(brunoAttempts);
+
+
     }
 
 }

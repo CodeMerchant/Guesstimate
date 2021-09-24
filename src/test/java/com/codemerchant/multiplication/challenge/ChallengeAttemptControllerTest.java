@@ -1,4 +1,4 @@
-package com.codemerchant.multiplication.challenge.tests;
+package com.codemerchant.multiplication.challenge;
 
 import com.codemerchant.multiplication.attempt.ChallengeAttempt;
 import com.codemerchant.multiplication.challenge.controller.ChallengeAttemptController;

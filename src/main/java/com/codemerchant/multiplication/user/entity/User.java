@@ -1,4 +1,4 @@
-package com.codemerchant.multiplication.user;
+package com.codemerchant.multiplication.user.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
