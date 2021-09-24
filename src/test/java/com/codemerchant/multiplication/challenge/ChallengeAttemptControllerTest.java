@@ -1,10 +1,10 @@
 package com.codemerchant.multiplication.challenge.tests;
 
-import com.codemerchant.multiplication.challenge.ChallengeAttempt;
+import com.codemerchant.multiplication.attempt.ChallengeAttempt;
 import com.codemerchant.multiplication.challenge.controller.ChallengeAttemptController;
 import com.codemerchant.multiplication.challenge.dto.ChallengeAttemptDTO;
 import com.codemerchant.multiplication.challenge.service.ChallengeService;
-import com.codemerchant.multiplication.user.User;
+import com.codemerchant.multiplication.user.entity.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
